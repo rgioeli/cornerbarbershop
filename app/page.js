@@ -1,91 +1,41 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
+import Image from "next/image";
+import { BsArrowDownCircleFill, BsMouse2Fill } from "react-icons/bs";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const handleSetAppointment = () => {
+    router.push("/set-an-appointment");
+  };
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+    <main className="container m-auto flex flex-col-reverse items-center justify-end lg:flex-row lg:justify-between h-[calc(100vh-50px)] lg:items-center">
+      <aside className="w-1/2 text-white mt-10 text-center lg:text-justify">
+        <h3 className="text-3xl text-[#342D24]">BARBOR</h3>
+        <h3 className="text-6xl mb-10">BRAD JOHNSON</h3>
+        <button
+          onClick={handleSetAppointment}
+          className="p-5 bg-[#342D24] rounded-xl text-white font-bold"
+        >
+          SET AN APPOINTMENT
+        </button>
+      </aside>
+      <aside className="w-1/2 mt-10">
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src={"/images/right-image.png"}
           priority
+          className="max-h-[750px]"
+          width={750}
+          height={750}
+          alt={"barber brad"}
         />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      </aside>
+      <div className="absolute bottom-5 container flex justify-center items-center space-x-2">
+        <BsMouse2Fill />
+        <p className="text-white font-bold">SCROLL</p>
+        <BsArrowDownCircleFill color="white" size={20} />
       </div>
     </main>
-  )
+  );
 }
